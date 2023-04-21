@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Perfil de Usuario</title>
+</head>
+<body>
+<h1 th:text="${title}"></h1>
+<div id="perfil">
+    <label for="name" id="name-label">Nombre: </label>
+    <span id="name" name="name" th:text="${usuario.nombre}"/>
+    <br />
+    <label for="surname" id="surname-label">Apellido: </label>
+    <span id="surname" name="surname" th:text="${usuario.apellido}"/>
+    <br/>
+    <label for="age" id="age-label">Edad: </label>
+    <span id="age" name="age" th:text="${usuario.edad}"/>
+    <br/>
+    <label for="email" id="email-label">email: </label>
+    <span id="email" name="email" th:if="${usuario.email}" th:text="${usuario.email}"/>
+    <span name="email" th:if="${usuario.email == null}">El usuario no tiene Email</span>
+</div>
+</body>
+</html>
