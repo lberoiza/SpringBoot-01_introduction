@@ -12,6 +12,8 @@
   <ul>
   	<li><a th:href="@{/params/string(texto='parametro enviado')}">/params/string?texto=parametro enviado</a></li>
   	<li><a th:href="@{/params/string(texto='otro')}">/params/string?texto=Otro</a></li>
+  	<li><a th:href="@{/params/mix-params(texto='Texto que se ingresó', number=777)}">Usando parametros Mezclados, String y Number</a></li>
+  	<li><a th:href="@{/params/mix-params-request(texto='Texto Usando HttpServletRequest', number=666)}">Usando HttpServletRequest y parametros Mezclados, String y Number</a></li>
   </ul>
 </body>
 </html>
