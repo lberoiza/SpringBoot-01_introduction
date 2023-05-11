@@ -30,7 +30,7 @@ public class IndexController {
   private String listarTitle;
 
   // value es opcional, se puede dejar directamente la direccion url
-  @GetMapping(value = { "/", "/index", "/home" })
+  @GetMapping(value = { "/index", "/home" })
   // Alias => @RequestMapping(value="/index", method = RequestMethod.GET)
   public String index(Model model) {
     // Se pueden usar tambien ModelMap, y ModelAndView para lo mismo (Enviar datos
