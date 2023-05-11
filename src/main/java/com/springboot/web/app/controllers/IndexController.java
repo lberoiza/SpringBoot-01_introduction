@@ -3,6 +3,7 @@ package com.springboot.web.app.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -16,14 +17,26 @@ import com.springboot.web.app.models.Usuario;
 @Controller
 public class IndexController {
 
+  @Value("${es.IndexController.index.title}")
+  private String indexTitle;
+
+  @Value("${es.IndexController.index.headerText}")
+  private String indexHeaderText;
+
+  @Value("${es.IndexController.perfil.title}")
+  private String perfilTitle;
+
+  @Value("${es.IndexController.listar.title}")
+  private String listarTitle;
+
   // value es opcional, se puede dejar directamente la direccion url
   @GetMapping(value = { "/", "/index", "/home" })
   // Alias => @RequestMapping(value="/index", method = RequestMethod.GET)
   public String index(Model model) {
     // Se pueden usar tambien ModelMap, y ModelAndView para lo mismo (Enviar datos
     // del controlador a la vista)
-    model.addAttribute("title", "Titulo Spring");
-    model.addAttribute("headerText", "Hola desde el Controlador");
+    model.addAttribute("title", indexTitle);
+    model.addAttribute("headerText", indexHeaderText);
     return "index";
   }
 
@@ -35,13 +48,13 @@ public class IndexController {
     user.setEdad(39);
 
     modelMap.addAttribute("usuario", user);
-    modelMap.addAttribute("title", String.format("Bienvenido: %s", user.getNombre()));
+    modelMap.addAttribute("title", String.format(perfilTitle, user.getNombre()));
     return "perfil";
   }
 
   @RequestMapping(value = "/listar", method = RequestMethod.GET)
   public String listar(ModelMap modelMap) {
-    modelMap.addAttribute("title", String.format("Lista de usuarios"));
+    modelMap.addAttribute("title", String.format(listarTitle));
     return "listar";
   }
 
