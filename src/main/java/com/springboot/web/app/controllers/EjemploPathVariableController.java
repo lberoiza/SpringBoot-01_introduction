@@ -23,8 +23,14 @@ public class EjemploPathVariableController {
   //  como en este ejemplo el nombre de la variable de argumento es "texto"
   //  se usó dentro de @PathVariable el argumento (name="texto_variable")
   @GetMapping("/user/{texto_variable}")
-  public String showUser(@PathVariable(name="texto_variable") String texto, Model model) {
-    model.addAttribute("textoIngresado", String.format("Pagina del usuario con id: '%s'", texto));
+  public String showUser(@PathVariable(name="texto_variable") Integer userId, Model model) {
+    model.addAttribute("textoIngresado", String.format("Pagina del usuario con id: '%d'", userId));
+    return "path_variables/show";
+  }
+
+  @GetMapping("/user/{user_id}/{action}")
+  public String showUser(@PathVariable(name="user_id") Integer userId, @PathVariable String action, Model model) {
+    model.addAttribute("textoIngresado", String.format("Pagina del usuario con id: '%d' ejecutando la accion: '%s'", userId, action));
     return "path_variables/show";
   }
 

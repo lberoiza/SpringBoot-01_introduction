@@ -11,8 +11,10 @@
   <h1 th:text="${h1}"></h1>
   <h2>Lista de Urls a probar</h2>
   <ul>
-  	<li><a th:href="@{/path_variables/user/123456789}">Ver usuario con ID: '123456789'</a></li>
-  	<li><a th:href="@{/path_variables/user/9999}">Ver usuario con ID: '9999'</a></li>
+  	<li><a th:href="@{/path_variables/user/} + ${123456789}">Ver usuario con ID: '123456789'</a></li>
+  	<li><a th:href="@{/path_variables/user/} + ${9999}">Ver usuario con ID: '9999'</a></li>
+  	<li><a th:href="@{/path_variables/user/} + ${9999} + '/' + ${'edit'}">Ejecuta la accion 'edit' sobre usuario con ID: '9999'</a></li>
+  	<li><a th:href="@{/path_variables/user/} + ${123456789} + '/' + ${'delete'}">Ejecuta la accion 'delete' sobre usuario con ID: '123456789'</a></li>
   </ul>
   <br>
 </body>
